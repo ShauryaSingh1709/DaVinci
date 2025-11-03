@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experimental loader with border marquee and 3D title">
+    <title>EDV 26.</title>
+    <link rel="stylesheet" href="loader/loader.css">
+    <style>
+        .page-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        .page-transition-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+    </style>
+
+    <script async="" src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.167.0/build/three.module.js",
+            "addons/": "https://cdn.jsdelivr.net/npm/three@0.167.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+    
+    <!-- Page Transition Overlay -->
+    <div class="page-transition-overlay" id="pageTransitionOverlay"></div>
+    
+    <!-- Marquee Border Container -->
+    <div class="marquee-border show">
+        <!-- Top Border -->
+        <div class="marquee-border-top">
+            <div class="marquee-text">
+             <span>
+Awaken the Mind. Decode the Unknown. • 
+Where Shadows Whisper Truths Untold. • 
+Every Symbol Hides a Story. • 
+Genius Lies Between Order and Chaos. • 
+Unravel the Code. Become the Legend. • 
+Awaken the Mind. Decode the Unknown. • 
+Where Shadows Whisper Truths Untold. • 
+Every Symbol Hides a Story. • 
+Genius Lies Between Order and Chaos. • 
+Unravel the Code. Become the Legend. • 
+</span>
+</div>
+        </div>
+        
+        <!-- Right Border -->
+        <div class="marquee-border-right">
+            <div class="marquee-text vertical">
+             <span>
+Awaken the Mind. Decode the Unknown. • 
+Where Shadows Whisper Truths Untold. • 
+Every Symbol Hides a Story. • 
+Genius Lies Between Order and Chaos. • 
+Unravel the Code. Become the Legend. • 
+Awaken the Mind. Decode the Unknown. • 
+Where Shadows Whisper Truths Untold. • 
+Every Symbol Hides a Story. • 
+Genius Lies Between Order and Chaos. • 
+Unravel the Code. Become the Legend. • 
+</span>
+</div>
+        </div>
+        
+        <!-- Bottom Border -->
+        <div class="marquee-border-bottom">
+            <div class="marquee-text reverse">
+                <span>
+Awaken the Mind. Decode the Unknown. • 
+Where Shadows Whisper Truths Untold. • 
+Every Symbol Hides a Story. • 
+Genius Lies Between Order and Chaos. • 
+Unravel the Code. Become the Legend. • 
+Awaken the Mind. Decode the Unknown. • 
+Where Shadows Whisper Truths Untold. • 
+Every Symbol Hides a Story. • 
+Genius Lies Between Order and Chaos. • 
+Unravel the Code. Become the Legend. • 
+</span>
+</div>
+        </div>
+        
+        <!-- Left Border -->
+        <div class="marquee-border-left">
+            <div class="marquee-text vertical reverse">
+              <span>
+Awaken the Mind. Decode the Unknown. • 
+Where Shadows Whisper Truths Untold. • 
+Every Symbol Hides a Story. • 
+Genius Lies Between Order and Chaos. • 
+Unravel the Code. Become the Legend. • 
+Awaken the Mind. Decode the Unknown. • 
+Where Shadows Whisper Truths Untold. • 
+Every Symbol Hides a Story. • 
+Genius Lies Between Order and Chaos. • 
+Unravel the Code. Become the Legend. • 
+</span>
+</div>
+        </div>
+    </div>
+    
+    <!-- Loader Container (starts hidden) -->
+    <div class="container show" id="container"><canvas data-engine="three.js r167" width="974" height="738" style="display: block; width: 974px; height: 738px;"></canvas></div>
+    
+    <!-- Main Title Text (always visible) -->
+    <div class="main-content" id="mainContent">
+        <div class="title-container">
+            <aside class="title-gradient"></aside>
+            <h1 class="title">Escape Da Vinci <br> 2026</h1>
+        </div>
+        
+        <!-- Sparkly Enter Button -->
+        <a class="dazzle fluid show" href="#" data-transition-url="../home/home.html" data-transition-type="fade" data-transition-duration="1000" id="enterButton" onclick="handlePageTransition(event)">
+            <!-- Sparkle SVGs -->
+            <svg aria-hidden="true" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M93.781 51.578C95 50.969 96 49.359 96 48c0-1.375-1-2.969-2.219-3.578 0 0-22.868-1.514-31.781-10.422-8.915-8.91-10.438-31.781-10.438-31.781C50.969 1 49.375 0 48 0s-2.969 1-3.594 2.219c0 0-1.5 22.87-10.406 31.781-8.908 8.913-31.781 10.422-31.781 10.422C1 45.031 0 46.625 0 48c0 1.359 1 2.969 2.219 3.578 0 0 22.873 1.51 31.781 10.422 8.906 8.911 10.406 31.781 10.406 31.781C45.031 95 46.625 96 48 96s2.969-1 3.562-2.219c0 0 1.523-22.871 10.438-31.781 8.913-8.908 31.781-10.422 31.781-10.422Z" fill="#000"></path>
+            </svg>
+            <svg aria-hidden="true" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M93.781 51.578C95 50.969 96 49.359 96 48c0-1.375-1-2.969-2.219-3.578 0 0-22.868-1.514-31.781-10.422-8.915-8.91-10.438-31.781-10.438-31.781C50.969 1 49.375 0 48 0s-2.969 1-3.594 2.219c0 0-1.5 22.87-10.406 31.781-8.908 8.913-31.781 10.422-31.781 10.422C1 45.031 0 46.625 0 48c0 1.359 1 2.969 2.219 3.578 0 0 22.873 1.51 31.781 10.422 8.906 8.911 10.406 31.781 10.406 31.781C45.031 95 46.625 96 48 96s2.969-1 3.562-2.219c0 0 1.523-22.871 10.438-31.781 8.913-8.908 31.781-10.422 31.781-10.422Z" fill="#000"></path>
+            </svg>
+            <svg aria-hidden="true" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M93.781 51.578C95 50.969 96 49.359 96 48c0-1.375-1-2.969-2.219-3.578 0 0-22.868-1.514-31.781-10.422-8.915-8.91-10.438-31.781-10.438-31.781C50.969 1 49.375 0 48 0s-2.969 1-3.594 2.219c0 0-1.5 22.87-10.406 31.781-8.908 8.913-31.781 10.422-31.781 10.422C1 45.031 0 46.625 0 48c0 1.359 1 2.969 2.219 3.578 0 0 22.873 1.51 31.781 10.422 8.906 8.911 10.406 31.781 10.406 31.781C45.031 95 46.625 96 48 96s2.969-1 3.562-2.219c0 0 1.523-22.871 10.438-31.781 8.913-8.908 31.781-10.422 31.781-10.422Z" fill="#000"></path>
+            </svg>
+            <svg aria-hidden="true" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M93.781 51.578C95 50.969 96 49.359 96 48c0-1.375-1-2.969-2.219-3.578 0 0-22.868-1.514-31.781-10.422-8.915-8.91-10.438-31.781-10.438-31.781C50.969 1 49.375 0 48 0s-2.969 1-3.594 2.219c0 0-1.5 22.87-10.406 31.781-8.908 8.913-31.781 10.422-31.781 10.422C1 45.031 0 46.625 0 48c0 1.359 1 2.969 2.219 3.578 0 0 22.873 1.51 31.781 10.422 8.906 8.911 10.406 31.781 10.406 31.781C45.031 95 46.625 96 48 96s2.969-1 3.562-2.219c0 0 1.523-22.871 10.438-31.781 8.913-8.908 31.781-10.422 31.781-10.422Z" fill="#000"></path>
+            </svg>
+            <svg aria-hidden="true" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M93.781 51.578C95 50.969 96 49.359 96 48c0-1.375-1-2.969-2.219-3.578 0 0-22.868-1.514-31.781-10.422-8.915-8.91-10.438-31.781-10.438-31.781C50.969 1 49.375 0 48 0s-2.969 1-3.594 2.219c0 0-1.5 22.87-10.406 31.781-8.908 8.913-31.781 10.422-31.781 10.422C1 45.031 0 46.625 0 48c0 1.359 1 2.969 2.219 3.578 0 0 22.873 1.51 31.781 10.422 8.906 8.911 10.406 31.781 10.406 31.781C45.031 95 46.625 96 48 96s2.969-1 3.562-2.219c0 0 1.523-22.871 10.438-31.781 8.913-8.908 31.781-10.422 31.781-10.422Z" fill="#000"></path>
+            </svg>
+            <!-- Button Text -->
+            <span class="fluid">ENTER</span>
+            <span class="fluid" aria-hidden="true">ENTER</span>
+        </a>
+    </div>
+     
+     <!-- Web SVG Overlay -->
+     <div class="web-overlay">
+             <img src="loader/logo1.png" id="logo" alt="Web overlay" class="web-svg-icon">
+         </a>
+     </div>
+     
+     <!-- Background Music -->
+        <audio id="background-music" loop="" autoplay="">
+            <source src="../audio/bg.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    
+    <!-- Page Transition Script -->
+    <script>
+        function handlePageTransition(event) {
+            event.preventDefault();
+            
+            const overlay = document.getElementById('pageTransitionOverlay');
+            const targetUrl = event.currentTarget.getAttribute('data-transition-url');
+            
+            // Start fade to black
+            overlay.classList.add('active');
+            
+            // Navigate after fade completes
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 800); // Match the CSS transition duration
+        }
+        
+        // Handle web overlay click as well
+        function handleWebClick(event) {
+            event.preventDefault();
+            window.open('https://unstop.com/hackathons/escape-da-vinci-chandigarh-university-cu-ajitgarh-punjab-1567073', '_blank');
+        }
+    </script>
+    
+    <!-- Experimental Loader JavaScript -->
+    <script type="module" src="loader/loader.js"></script>
+
+</body>
+</html>

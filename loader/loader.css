@@ -1,0 +1,715 @@
+/* Experimental Escape Da Vinci 2k26 Loader Styles */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=New+Rocker&family=Unbounded:wght@200..900&display=swap');
+
+/* GT Standard Font */
+@font-face {
+    font-family: "GT Standard";
+    src: url("https://assets.codepen.io/7558/GT-Standard-VF-Trial.woff2") format("woff2-variations");
+    font-weight: 300 900;
+    font-stretch: 0% 150%;
+    font-style: normal;
+}
+
+/* CSS Custom Properties */
+:root {
+    --color: #C9C8C7;
+    --shadow: #66615E;
+    --glare: #949392;
+    --transition: 0.2s;
+    --font-size-min: 16;
+    --font-size-max: 20;
+    --font-ratio-min: 1.2;
+    --font-ratio-max: 1.33;
+    --font-width-min: 375;
+    --font-width-max: 1500;
+    --border-thickness: 50px;
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    font-family: "GT Standard", "Arial", sans-serif;
+    overflow: hidden;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                      radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), transparent),
+                      radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                      radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.6), transparent);
+    background-repeat: repeat;
+    background-size: 400px 200px;
+    animation: sparkle 20s linear infinite;
+    z-index: -2; /* ✅ stars below clouds */
+    opacity: 0.3; /* ✅ lighter stars */
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: -1; /* ✅ clouds above stars */
+}
+
+
+/* ========================================
+   MARQUEE BORDER SYSTEM
+======================================== */
+
+.marquee-border {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.marquee-border.show {
+    opacity: 1;
+}
+
+/* Common marquee border styling */
+.marquee-border > div {
+    position: absolute;
+    background: color-mix(in hsl, white, transparent 86%);
+    border: 1px solid #ff4444;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+/* Top Border */
+.marquee-border-top {
+    top: 0;
+    left: var(--border-thickness);
+    width: calc(100% - 2 * var(--border-thickness));
+    height: var(--border-thickness);
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, transparent 100%);
+}
+
+/* Right Border */
+.marquee-border-right {
+    top: var(--border-thickness);
+    right: 0;
+    width: var(--border-thickness);
+    height: calc(100% - 2 * var(--border-thickness));
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, transparent 100%);
+}
+
+/* Bottom Border */
+.marquee-border-bottom {
+    bottom: 0;
+    left: var(--border-thickness);
+    width: calc(100% - 2 * var(--border-thickness));
+    height: var(--border-thickness);
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, transparent 100%);
+}
+
+/* Left Border */
+.marquee-border-left {
+    top: var(--border-thickness);
+    left: 0;
+    width: var(--border-thickness);
+    height: calc(100% - 2 * var(--border-thickness));
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, transparent 100%);
+}
+
+/* Marquee Text Container
+.marquee-text {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: marqueeScroll 30s linear infinite;
+    will-change: transform;
+}
+
+.marquee-text.vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    width: 100%;
+    height: auto;
+    animation: marqueeScrollVertical 30s linear infinite;
+}
+
+.marquee-text.reverse {
+    animation-direction: reverse;
+}
+
+.marquee-text span {
+    font-family: "GT Standard", "Arial", sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 500;
+    background: linear-gradient(90deg, #ffffff, rgba(255,255,255,0.9), #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 6px rgba(238, 132, 132, 0.86);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-right: 50px; 
+    display: inline-block;
+    min-width: 100vw; 
+}
+
+.marquee-text.vertical span {
+    min-width: auto;
+    min-height: 100vh;
+    padding-right: 0;
+    padding-bottom: 50px;
+}
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes marqueeScrollVertical {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+} */
+
+/* Marquee Text Container */
+.marquee-text {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: marqueeScroll 20s linear infinite;
+    will-change: transform;
+}
+
+/* Vertical marquee text (for left and right borders) */
+.marquee-text.vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    width: 100%;
+    height: auto;
+    animation: marqueeScrollVertical 25s linear infinite;
+}
+
+/* Reverse direction marquee */
+.marquee-text.reverse {
+    animation-direction: reverse;
+}
+
+.marquee-text span {
+    font-family: "GT Standard", "Arial", sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 500;
+    color: white;
+    text-shadow: 
+        0 0 3px #8B0000,
+        0 0 6px #A52A2A,
+        0 0 9px #DC143C,
+        1px 1px 2px #8B0000,
+        -1px -1px 2px #8B0000,
+        1px -1px 2px #8B0000,
+        -1px 1px 2px #8B0000;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-right: 80px; /* Add spacing for infinite loop effect */
+    display: inline-block;
+}
+
+/* For vertical text, adjust the spacing */
+.marquee-text.vertical span {
+    padding-right: 0;
+    padding-bottom: 80px;
+}
+
+@keyframes marqueeScroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes marqueeScrollVertical {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-50%);
+    }
+}
+
+/* Pause marquee on hover */
+.marquee-border:hover .marquee-text {
+    animation-play-state: paused;
+}
+
+/* ========================================
+   CLOUD CONTAINER
+======================================== */
+
+/* Cloud Container - starts hidden */
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.container.show {
+    opacity: 1;
+}
+
+/* ========================================
+   MAIN CONTENT
+======================================== */
+
+/* Main Content - always visible */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    z-index: 10;
+    text-align: center;
+    gap: 3rem;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    /* Add padding to account for border */
+    padding: var(--border-thickness) var(--border-thickness);
+}
+
+/* Title Container with Grid Layout */
+.title-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.title-container>* {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/* Gradient Background for Text */
+.title-gradient {
+    mix-blend-mode: multiply;
+    animation: move 40000ms infinite linear;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+@keyframes move {
+    100% {
+        transform: translate(41px, 0px);
+    }
+}
+
+/* ========================================
+   3D TITLE STYLING
+======================================== */
+
+/* Enhanced 3D Title Styling */
+.title {
+    font-family: "New Rocker", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(4rem, 12vw, 10rem);
+    margin: 0;
+    padding: 0;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: white;
+    text-align: center;
+    opacity: 1;
+    animation: titleAppear 1.5s ease-out;
+    z-index: 2;
+    position: relative;
+    
+    /* Enhanced 3D Text Shadow Effect - Similar to Enter Button */
+    text-shadow: 
+        /* Primary shadow layers for depth */
+        0 0 2px #ff4444,
+        0 0 4px #ff2222,
+        0 0 6px #ff0000,
+        0 0 8px rgba(255, 68, 68, 0.5),
+        
+        /* 3D depth shadows */
+        1px 1px 0 var(--shadow),
+        2px 2px 0 var(--shadow),
+        3px 3px 0 var(--shadow),
+        4px 4px 0 var(--shadow),
+        5px 5px 0 var(--shadow),
+        6px 6px 0 var(--shadow),
+        7px 7px 0 var(--shadow),
+        8px 8px 0 var(--shadow),
+        
+        /* Outer glow for dramatic effect */
+        0 0 15px rgba(255, 68, 68, 0.3),
+        0 0 25px rgba(255, 34, 34, 0.2),
+        0 0 35px rgba(255, 0, 0, 0.1);
+    
+    /* Transform for slight 3D perspective */
+    transform: perspective(1000px) rotateX(5deg);
+}
+
+/* ========================================
+   SPARKLY ENTER BUTTON
+======================================== */
+
+/* Sparkly Enter Button */
+.dazzle {
+    --font-level: 3;
+    --font-size: 1em;
+    --padding: 0.12em;
+    padding: var(--padding) calc(var(--padding) * 2);
+    border-radius: 0.25em;
+    text-decoration: none;
+    color: transparent;
+    position: relative;
+    transition: background 0.2s 0.1s;
+    font-weight: 800;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    font-family: "New Rocker", system-ui;
+    border: 1.2px solid #ff4444;
+    margin: 0 auto;
+    display: block;
+    width: fit-content;
+}
+
+.dazzle.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dazzle:is(:hover, :focus-visible) {
+    background: color-mix(in hsl, white, rgba(238, 132, 132, 0.86));
+}
+
+.dazzle span {
+    display: inline-block;
+    transition: all 0.2s;
+    text-decoration: none;
+    text-shadow: calc(var(--hover) * (var(--font-size) * -0)) calc(var(--hover) * (var(--font-size) * 0)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.02)) calc(var(--hover) * (var(--font-size) * 0.02)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.04)) calc(var(--hover) * (var(--font-size) * 0.04)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.06)) calc(var(--hover) * (var(--font-size) * 0.06)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.08)) calc(var(--hover) * (var(--font-size) * 0.08)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.1)) calc(var(--hover) * (var(--font-size) * 0.1)) var(--shadow);
+    transform: translate(calc(var(--hover) * (var(--font-size) * 0.1)),
+            calc(var(--hover) * (var(--font-size) * -0.1)));
+}
+
+.dazzle span:last-of-type {
+    position: absolute;
+    inset: var(--padding) calc(var(--padding) * 2);
+    background: linear-gradient(108deg,
+            transparent 0 55%,
+            var(--glare) 55% 60%,
+            transparent 60% 70%,
+            var(--glare) 70% 85%,
+            transparent 85%) calc(var(--pos) * -200%) 0% / 200% 100%,
+        var(--color);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    z-index: 2;
+    text-shadow: none;
+    transform: translate(calc(var(--hover) * (var(--font-size) * 0.1)),
+            calc(var(--hover) * (var(--font-size) * -0.1)));
+    transition: transform 0.2s, background-position 0s;
+}
+
+.dazzle:is(:hover, :focus-visible) span:last-of-type {
+    transition: transform 0.2s,
+        background-position calc(var(--hover) * 1.5s) calc(var(--hover) * 0.25s);
+}
+
+.dazzle {
+    --hover: 0.4;
+    --pos: 0;
+}
+
+.dazzle:is(:hover, :focus-visible) {
+    --hover: 1;
+    --pos: 1;
+}
+
+.dazzle:active {
+    --hover: 0;
+}
+
+.dazzle:active span:last-of-type {
+    --hover: 0;
+    --pos: 1;
+}
+
+.dazzle svg {
+    position: absolute;
+    z-index: 3;
+    width: calc(var(--font-size) * 0.5);
+    aspect-ratio: 1;
+    --delay-step: 0.15;
+    top: calc(var(--y, 50) * 1%);
+    left: calc(var(--x, 0) * 1%);
+    transform: translate(-50%, -50%) scale(0);
+    stroke-width: 1;
+}
+
+.dazzle svg path {
+    fill: var(--glare);
+}
+
+.dazzle:is(:hover, :focus-visible) svg {
+    animation: sparkleAnim 0.75s calc(0.1s + ((var(--delay-step) * var(--d)) * 1s)) both;
+}
+
+@keyframes sparkleAnim {
+    50% {
+        transform: translate(-50%, -50%) scale(var(--s, 1));
+    }
+}
+
+.dazzle svg:nth-of-type(1) {
+    --x: 0;
+    --y: 20;
+    --s: 1.1;
+    --d: 1;
+}
+
+.dazzle svg:nth-of-type(2) {
+    --x: 15;
+    --y: 80;
+    --s: 1.25;
+    --d: 2;
+}
+
+.dazzle svg:nth-of-type(3) {
+    --x: 45;
+    --y: 40;
+    --s: 1.1;
+    --d: 3;
+}
+
+.dazzle svg:nth-of-type(4) {
+    --x: 75;
+    --y: 60;
+    --s: 0.9;
+    --d: 2;
+}
+
+.dazzle svg:nth-of-type(5) {
+    --x: 100;
+    --y: 30;
+    --s: 0.8;
+    --d: 4;
+}
+
+/* Canvas styles */
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Fluid Typography Utility */
+:where(.fluid) {
+    --fluid-min: calc(var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0)));
+    --fluid-max: calc(var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0)));
+    --fluid-preferred: calc((var(--fluid-max) - var(--fluid-min)) / (var(--font-width-max) - var(--font-width-min)));
+    --fluid-type: clamp((var(--fluid-min) / 16) * 1rem,
+            ((var(--fluid-min) / 16) * 1rem) - (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) + (var(--fluid-preferred) * 100vi),
+            (var(--fluid-max) / 16) * 1rem);
+    font-size: var(--fluid-type);
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+/* Title Appear Animation */
+@keyframes titleAppear {
+    0% {
+        opacity: 0;
+        transform: perspective(1000px) rotateX(5deg) translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: perspective(1000px) rotateX(5deg) translateY(0);
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media screen and (max-width: 768px) {
+    :root {
+        --border-thickness: 40px;
+    }
+    
+    .title {
+        font-size: clamp(3rem, 10vw, 8rem);
+    }
+
+    .main-content {
+        gap: 2.5rem;
+        padding: var(--border-thickness) calc(var(--border-thickness) * 0.8);
+    }
+
+    .marquee-text span {
+        font-size: clamp(0.7rem, 1.3vw, 0.9rem);
+        letter-spacing: 1px;
+    }
+
+    .dazzle {
+        --font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :root {
+        --border-thickness: 30px;
+    }
+    
+    .title {
+        font-size: clamp(2.5rem, 8vw, 6rem);
+    }
+
+    .main-content {
+        gap: 2rem;
+        padding: var(--border-thickness) calc(var(--border-thickness) * 0.6);
+    }
+
+    .marquee-text span {
+        font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+        letter-spacing: 0.8px;
+        padding: 0 8px;
+    }
+
+    .dazzle {
+        --font-size: 0.7em;
+    }
+}
+
+/* Hide scrollbars */
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Web SVG Overlay */
+.web-overlay {
+    position: fixed;
+    top: calc(var(--border-thickness) + 20px);
+    right: calc(var(--border-thickness) + 15px);
+    z-index: 1000;
+    pointer-events: auto; /* Allow clicking on the overlay */
+}
+
+.web-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.web-svg-icon {
+    width: 60px;
+    height: 60px;
+    opacity: 0.65;
+    filter: brightness(0) invert(1); /* Makes the SVG white */
+    transition: opacity 0.3s ease;
+    animation: rotate360 4s linear infinite; /* Continuous 360-degree rotation */
+    cursor: pointer;
+}
+
+/* Keyframes for 360-degree rotation */
+@keyframes rotate360 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Optional: Show overlay on hover */
+.web-overlay:hover .web-svg-icon,
+.web-link:hover .web-svg-icon {
+    opacity: 0.9;
+}
+
+/* Responsive adjustments for mobile */
+@media screen and (max-width: 768px) {
+    .web-overlay {
+        top: calc(var(--border-thickness) + 15px);
+        right: calc(var(--border-thickness) + 15px);
+    }
+    
+    .web-svg-icon {
+        width: 45px;
+        height: 45px;
+        opacity: 0.1;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .web-overlay {
+        top: calc(var(--border-thickness) + 10px);
+        right: calc(var(--border-thickness) + 10px);
+    }
+    
+    .web-svg-icon {
+        width: 35px;
+        height: 35px;
+        opacity: 0.08;
+    }
+}
+
+#logo {
+    height: 100px;
+    width: 100px;
+}

@@ -1,0 +1,811 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+@font-face {
+  font-family: PixelText;
+  src: url(https://assets.codepen.io/36869/Grand9KPixel.ttf);
+}
+
+/* Simple Matrix Background Effect - Performance Optimized */
+.matrix-grid-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    background: 
+        linear-gradient(90deg, transparent 98%, rgba(255, 107, 107, 0.3) 100%),
+        linear-gradient(rgba(255, 107, 107, 0.3) 1px, transparent 1px);
+    background-size: 100px 100px;
+    animation: matrix-slide 20s linear infinite;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.matrix-grid-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(0deg, transparent 98%, rgba(255, 107, 107, 0.2) 100%),
+        linear-gradient(rgba(255, 107, 107, 0.2) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: matrix-slide-reverse 15s linear infinite;
+}
+
+.matrix-grid-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+    animation: matrix-pulse 8s ease-in-out infinite;
+}
+
+@keyframes matrix-slide {
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(100px) translateX(50px); }
+}
+
+@keyframes matrix-slide-reverse {
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(-50px) translateX(-25px); }
+}
+
+@keyframes matrix-pulse {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.3; }
+}
+
+/* VHS/CRT Overlay Effects - Low Opacity */
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+/* VHS Body overlay (very subtle) */
+body::before {
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 500;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    opacity: 1.6; /* Low opacity */
+}
+
+/* Noise Effects */
+.noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 400;
+    opacity: 0.45; /* Much lower opacity */
+    pointer-events: none;
+}
+
+.noise::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://ice-creme.de/images/background-noise.png');
+    pointer-events: none;
+}
+
+.noise-moving {
+    opacity: 0.7; /* Low opacity for moving noise */
+    z-index: 450;
+}
+
+.noise-moving::before {
+    will-change: background-position;
+    animation: vhs-noise 1s infinite alternate;
+}
+
+/* Scanlines */
+.scanlines {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 300;
+    opacity: 0.9; /* Low opacity for scanlines */
+    will-change: opacity;
+    animation: vhs-opacity 3s linear infinite;
+}
+
+.scanlines::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.3) 51%);
+    background-size: 100% 4px;
+    will-change: background, background-size;
+    animation: vhs-scanlines 0.2s linear infinite;
+}
+
+/* VHS Overlay Container */
+.vhs-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 600;
+    opacity: 1.25; /* Overall low opacity for the entire overlay */
+}
+
+/* VHS Animations */
+@keyframes vhs-noise {
+    0%, 100% { background-position: 0 0; }
+    10% { background-position: -5% -10%; }
+    20% { background-position: -15% 5%; }
+    30% { background-position: 7% -25%; }
+    40% { background-position: 20% 25%; }
+    50% { background-position: -25% 10%; }
+    60% { background-position: 15% 5%; }
+    70% { background-position: 0 15%; }
+    80% { background-position: 25% 35%; }
+    90% { background-position: -10% 10%; }
+}
+
+@keyframes vhs-opacity {
+    0% { opacity: 0.2; }
+    20% { opacity: 0.1; }
+    35% { opacity: 0.15; }
+    50% { opacity: 0.25; }
+    60% { opacity: 0.12; }
+    80% { opacity: 0.2; }
+    100% { opacity: 0.2; }
+}
+
+@keyframes vhs-scanlines {
+    from {
+        background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.3) 51%);
+        background-size: 100% 4px;
+    }
+    to {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 50%, transparent 51%);
+        background-size: 100% 4px;
+    }
+}
+
+/* Enhanced glassmorphic cards to react to background */
+.img-main.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 107, 107, 0.3); /* Light red border to match matrix */
+    border-radius: 20px;
+    padding: 30px;
+    min-height: 250px;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    box-shadow: 0 8px 32px rgba(255, 107, 107, 0.1); /* Subtle red glow */
+}
+
+.img-main.glass-card:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 107, 107, 0.6);
+    box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+    backdrop-filter: blur(30px);
+}
+
+/* Enhanced frosted glass effect with red tint */
+.img-main.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-radius: 20px;
+    z-index: 1;
+}
+
+/* Red glow effect on hover */
+.img-main.glass-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, rgba(255, 107, 107, 0.4), transparent);
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.img-main.glass-card:hover::after {
+    opacity: 1;
+}
+ 
+*                                       {margin: 0;padding: 0;box-sizing: border-box;}
+img                                     {width: 100%;height: auto;}
+button,a                                {border: 1px solid transparent;background: transparent;display: flex;align-items: center;justify-content: center;text-decoration: none;color: #EBEBEB;}
+body                                    {font-family: "Golos Text"; background: black; min-height: 100vh;}
+/* background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%); */
+/*  */
+.webgl                                  {position: fixed;left: 0;top: 0;width: 100vw;height: 100dvh;z-index: -5;} /* Above matrix background but behind content */
+.header                                 {display: flex;align-items: center;justify-content: space-between;padding: 34px 40px;}
+.logo                                   {max-width: 270px;display: flex;align-self: center;justify-content: center;}
+.nav-link-container                     {display: flex;align-items: center;gap: 40px;}
+.nav-link-container                     {background: #0F0F0F;padding-left: 30px;}
+.nav-link-container button img          {width: 20px;aspect-ratio: 1;}
+.nav-link-container a                   {font-size: 14px;text-transform: uppercase;transition: all ease-in-out 0.15s;}
+.nav-link-container a:hover             {color: #D6F844;}
+.toggle-btn                             {background: #515151;padding: 16px;}
+.banner-section                         {max-width: 1122px;margin: 120px auto 0;text-align: center;padding-bottom: 80px;}
+h1                                      {font-size: 100px;line-height: 140px;color: white;font-weight: 400;text-transform: uppercase;font-family: "New Rocker", system-ui;}
+p                                       {color: #949494;margin-bottom: 20px;}
+/*  */
+.banner-section a                       {display: flex;align-items: center;gap: 4px;color: #D6F844;position: relative;max-width: fit-content;margin: 30px auto 0;font-weight: 500;text-transform: uppercase;}
+.banner-section a img                   {width: 18px;aspect-ratio: 1;transition: all ease-in-out 0.15s;transform-origin: center;}
+.banner-section a::after                {content: '';position: absolute;right: 0;top: calc(100% + 2px);width: 0%;height: 1px;background: #D6F844;transition: all ease-in-out 0.15s;}
+.banner-section a:hover:after           {width: 100%;left: 0;right: unset;}
+.banner-section a:hover img             {transform: rotate(45deg);}
+/*  */
+/* Images Container - Original Layout */
+.images-container                       {display: flex;justify-content: space-between;flex-wrap: wrap;padding: 100px 40px;}
+.images-container .img                  {width: 100%;display: flex;}
+.images-container .img:nth-child(even)  {justify-content: end;}
+.img-main                               {max-width: 30vw;width: 100%;border: 1px solid transparent;overflow: hidden;position: relative;line-height: 0;opacity: 0;transition: all ease-in-out 0.15s;}
+.img-main:hover:after                   {content: '';position: absolute;top: -100%;left: -100%;height: 200%;width: 200%;background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);animation: slide 1s forwards;filter: blur(33px);}
+/*  */
+/* Card Content */
+.card-content                           {position: relative;z-index: 2;width: 100%;display: flex;flex-direction: column;justify-content: center;align-items: center;text-align: center;padding: 10px;}
+
+.card-content h3                        {color: red;font-size: 20px;font-weight: 700;margin-bottom: 15px;font-family: 'PixelText', serif;line-height: 1.2;text-align: center;letter-spacing: 0.5px;text-shadow: 0 0 4px rgba(255, 0, 0, 0.3);}
+
+.card-content p                         {color: rgba(255, 255, 255, 0.9);font-size: 15px;line-height: 1.4;margin: 0;text-align: center;letter-spacing: 0.3px;}
+/*  */
+@keyframes slide                        {
+    from                                { top: -100%; left: -100%; }
+    to                                  { top: 100%; left: 100%; }
+}
+.img-main:hover img                     {transform: scale(1.2);}
+.img-main:hover                         {border-color: #5599FF;}
+.zoom-img img                           {aspect-ratio: 16 / 9;object-fit: cover;transition: all ease 0.2s;object-position: top;}
+.images-container img:hover             {transform: scale(1.1) ;opacity: 1;}
+section{min-height: 100vh;}
+/*  */
+html.lenis, html.lenis body             {height: auto;}
+.lenis.lenis-smooth                     {scroll-behavior: auto !important;}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior: contain;}
+.lenis.lenis-stopped                    {overflow: hidden;}
+.lenis.lenis-scrolling iframe           {pointer-events: none;}
+ 
+ 
+@keyframes spin                         {
+  to                                    { transform: rotate(360deg); }
+}
+#preloader                              {position: fixed; top: 0;left: 0;width: 100%;height: 100%;z-index: 1001;}
+.loder-parent                           {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);}
+#loader                                 {display: block;position: relative;width: 300px;height: 300px;border-radius: 50%;border: 5px solid transparent;border-top-color: #D6F844;-webkit-animation: spin 2s linear infinite;animation: spin 2s linear infinite;}
+#loader:before                          {content: "";position: absolute;top: 5px;left: 5px;right: 5px;bottom: 5px;border-radius: 50%;border: 4px solid transparent;border-top-color: #D6F844;-webkit-animation: spin 3s linear infinite;animation: spin 3s linear infinite;}
+#loader:after                           {content: "";position: absolute;top: 15px;left: 15px;right: 15px;bottom: 15px;border-radius: 50%;border: 3px solid transparent;border-top-color: #D6F844;-webkit-animation: spin 1.5s linear infinite;animation: spin 1.5s linear infinite;}
+@-webkit-keyframes spin                 {
+    0%                                  {-webkit-transform: rotate(0deg);-ms-transform: rotate(0deg);transform: rotate(0deg);}
+    100%                                {-webkit-transform: rotate(360deg);-ms-transform: rotate(360deg);transform: rotate(360deg);}
+}
+/* Movie poster with glare effect */
+.loader-text                            {position: absolute;left: 50%;transform: translate(-50%, -50%);top: 50%;font-size: 2rem;line-height: 1;font-weight: 700;color: #D6F844;}
+.loader-info-text{
+    position: absolute;left: 50%;transform: translate(-50%,-50%);top: 70%;font-size: 1rem;line-height: 1;font-weight: 400;color: #f84444;   }
+ 
+/* ===== MOBILE RESPONSIVE ===== */
+ 
+/* Tablet and smaller screens */
+@media screen and (max-width: 1024px)   {
+    .header                             {padding: 20px 30px;}
+    .nav-link-container                 {gap: 25px;padding-left: 20px;}
+    h1                                  {font-size: 80px;line-height: 120px;}
+    .banner-section                     {margin-top: 140px;}
+}
+ 
+/* Mobile landscape and smaller tablets */
+@media screen and (max-width: 768px)    {
+    .header                             {padding: 15px 20px;flex-direction: column;gap: 20px;}
+    .logo                               {max-width: 300px;}
+    .nav-link-container                 {gap: 20px;padding-left: 15px;flex-wrap: wrap;justify-content: center;}
+    
+    .nav-link-container a               {font-size: 12px;}
+    h1                                  {font-size: 60px;line-height: 80px;}
+    .banner-section                     {padding: 0 20px;margin-top: 120px;}
+    .images-container                   {padding: 40px 20px;}
+    .img-main                           {max-width: 35vw;}
+    .img-main.glass-card                {min-height: 180px;padding: 20px;}
+}
+@media screen and (max-width: 575px)    {
+    .img-main                           {max-width: 50vw;width: 100%;}
+    .img-main.glass-card                {min-height: 160px;}
+}
+/* Mobile portrait */
+@media screen and (max-width: 480px)    {
+    .header                             {padding: 15px;}
+    .logo                               {max-width: 200px;}
+    .nav-link-container                 {gap: 10px;padding-left: 10px;padding-right: 0px;}    
+    .nav-link-container a               {font-size: 11px;}    
+    .toggle-btn                         {padding: 12px;}
+    h1                                  {    font-size: 48px;line-height: 50px;}
+    .banner-section                     {padding: 0 15px;margin-top: 100px;}
+    .banner-section a                   {margin: 20px auto 0;font-size: 14px;}
+    .images-container                   {padding: 40px 15px;}
+    .card-content h3                    {font-size: 18px;line-height: 1.1;letter-spacing: 0.3px;}
+    .card-content p                     {font-size: 13px;line-height: 1.3;}
+    /* Loader adjustments for mobile */
+    #loader                             {width: 200px;height: 200px;}    
+    .loader-text                        {font-size: 1.5rem;}
+}
+ 
+/* Very small screens */
+@media screen and (max-width: 360px)    {
+    .header                             {padding: 10px;}
+    .nav-link-container                 {gap: 10px;padding-left: 8px;padding-right: 8px;}
+    .nav-link-container a               {font-size: 10px;}
+    h1                                  {font-size: 32px;line-height: 40px;}    
+    .banner-section                     {padding: 0 10px;margin-top: 80px;}
+    .images-container                   {padding: 30px 10px;}
+    .card-content h3                    {font-size: 16px;line-height: 1.0;letter-spacing: 0.2px;}
+    .card-content p                     {font-size: 12px;line-height: 1.2;}
+    #loader                             {width: 150px;height: 150px;}
+    .loader-text                        {font-size: 1.2rem;}
+}
+ 
+/* Landscape orientation specific */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .header                             {padding: 10px 20px;}
+    h1                                  {font-size: 50px;line-height: 60px;}
+    .banner-section                     {margin-top: 60px;}
+}
+
+/* Dynamic Island */
+.dynamic-island {
+    position: fixed;
+    top: 20px;
+    left: 51%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px dashed #ff4444;
+    border-radius: 38px;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    max-width: 900px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    opacity: 1;
+    scale: 1;
+    transition: width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                padding 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                top 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                max-width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                opacity 0.4s ease,
+                scale 0.4s ease;
+}
+
+.dynamic-island.shrunk {
+    width: 40%;
+    max-width: 600px;
+    padding: 10px 20px;
+    top: 8px;
+    opacity: 0.95;
+    scale: 0.98;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ff4444;
+    line-height: 1.1;
+    transition: font-size 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    max-width: 100px;
+    max-height: 80px;
+}
+
+.logo img {
+    height: 90px;
+    width: auto;
+    transition: height 0.4s ease;
+    object-fit: cover;
+    object-position: center;
+    padding: 0;
+    margin: 1;
+    transform: scale(0.5);
+}
+
+.dynamic-island.shrunk .logo,.dynamic-island.shrunk .logo .img {
+    font-size: 32px;
+    margin-top: 10px;
+    height: 50px;
+}
+/* 
+.dynamic-island.shrunk .logo img {
+    height: 60px;
+    transform: scale(0.5);
+} */
+
+.menu-items {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-items a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'PixelText', serif;
+    transition: color 0.3s ease, font-size 0.4s ease;
+    cursor: pointer;
+}
+
+.menu-items a:hover {
+    color: #ff4444;
+}
+
+.dynamic-island.shrunk .menu-items a {
+    font-size: 16px;
+    font-family: 'PixelText', serif;
+}
+
+.section {
+    transition: padding-top 0.4s ease;
+}
+
+.section.padded {
+    padding-top: 80px;
+}
+.logo {
+    color: #ff4444;
+    font-weight: bold;
+    font-size: 48px;
+    margin-bottom: 3px;
+    font-family: "Special Elite", monospace;
+    z-index: 2;
+    transition: font-size 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 9px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff4444;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 68, 68, 0.7);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #ff4444 transparent;
+}
+
+/* Web SVG Overlay */
+.web-overlay {
+    position: fixed;
+    top: 20px;
+    right: 15px;
+    z-index: 1000;
+    pointer-events: auto; /* Allow clicking on the overlay */
+}
+
+.web-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.web-svg-icon {
+    width: 60px;
+    height: 60px;
+    opacity: 0.65;
+    filter: brightness(0) invert(1); /* Makes the SVG white */
+    transition: opacity 0.3s ease;
+    animation: rotate360 4s linear infinite; /* Continuous 360-degree rotation */
+    cursor: pointer;
+}
+
+/* Keyframes for 360-degree rotation */
+@keyframes rotate360 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Optional: Show overlay on hover */
+.web-overlay:hover .web-svg-icon,
+.web-link:hover .web-svg-icon {
+    opacity: 0.9;
+}
+
+/* ========================================
+   SPARKLY REGISTER BUTTON (SAME AS ENTER BUTTON)
+======================================== */
+
+/* CSS Custom Properties for Button */
+:root {
+    --color: #C9C8C7;
+    --shadow: #66615E;
+    --glare: #949392;
+    --transition: 0.2s;
+    --font-size-min: 16;
+    --font-size-max: 20;
+    --font-ratio-min: 1.2;
+    --font-ratio-max: 1.33;
+    --font-width-min: 375;
+    --font-width-max: 1500;
+}
+
+/* GT Standard Font */
+@font-face {
+    font-family: "GT Standard";
+    src: url("https://assets.codepen.io/7558/GT-Standard-VF-Trial.woff2") format("woff2-variations");
+    font-weight: 300 900;
+    font-stretch: 0% 150%;
+    font-style: normal;
+}
+
+/* Sparkly Register Button - Top Left Position */
+.dazzle {
+    --font-level: 2;
+    --font-size: 0.75em;
+    --padding: 0.1em;
+    padding: var(--padding) calc(var(--padding) * 1.8);
+    border-radius: 0.2em;
+    text-decoration: none;
+    color: transparent;
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    transition: background 0.2s 0.1s, transform 0.3s ease;
+    font-weight: 700;
+    opacity: 0.9;
+    transform: translateY(0);
+    font-family: "GT Standard", "Arial", sans-serif;
+    border: 1px solid rgba(255, 68, 68, 0.8);
+    margin: 0;
+    display: block;
+    width: fit-content;
+    z-index: 1001;
+    clear: both;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.1);
+}
+
+.dazzle:is(:hover, :focus-visible) {
+    background: rgba(255, 68, 68, 0.15);
+    border-color: #ff4444;
+    opacity: 1;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255, 68, 68, 0.2);
+}
+
+.dazzle span {
+    display: inline-block;
+    transition: all 0.2s;
+    text-decoration: none;
+    text-shadow: calc(var(--hover) * (var(--font-size) * -0)) calc(var(--hover) * (var(--font-size) * 0)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.02)) calc(var(--hover) * (var(--font-size) * 0.02)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.04)) calc(var(--hover) * (var(--font-size) * 0.04)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.06)) calc(var(--hover) * (var(--font-size) * 0.06)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.08)) calc(var(--hover) * (var(--font-size) * 0.08)) var(--shadow),
+        calc(var(--hover) * (var(--font-size) * -0.1)) calc(var(--hover) * (var(--font-size) * 0.1)) var(--shadow);
+    transform: translate(calc(var(--hover) * (var(--font-size) * 0.1)),
+            calc(var(--hover) * (var(--font-size) * -0.1)));
+}
+
+.dazzle span:last-of-type {
+    position: absolute;
+    inset: var(--padding) calc(var(--padding) * 2);
+    background: linear-gradient(108deg,
+            transparent 0 55%,
+            var(--glare) 55% 60%,
+            transparent 60% 70%,
+            var(--glare) 70% 85%,
+            transparent 85%) calc(var(--pos) * -200%) 0% / 200% 100%,
+        var(--color);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    z-index: 2;
+    text-shadow: none;
+    transform: translate(calc(var(--hover) * (var(--font-size) * 0.1)),
+            calc(var(--hover) * (var(--font-size) * -0.1)));
+    transition: transform 0.2s, background-position 0s;
+}
+
+.dazzle:is(:hover, :focus-visible) span:last-of-type {
+    transition: transform 0.2s,
+        background-position calc(var(--hover) * 1.5s) calc(var(--hover) * 0.25s);
+}
+
+.dazzle {
+    --hover: 0.4;
+    --pos: 0;
+}
+
+.dazzle:is(:hover, :focus-visible) {
+    --hover: 1;
+    --pos: 1;
+}
+
+.dazzle:active {
+    --hover: 0;
+}
+
+.dazzle:active span:last-of-type {
+    --hover: 0;
+    --pos: 1;
+}
+
+.dazzle svg {
+    position: absolute;
+    z-index: 3;
+    width: calc(var(--font-size) * 0.4);
+    aspect-ratio: 1;
+    --delay-step: 0.15;
+    top: calc(var(--y, 50) * 1%);
+    left: calc(var(--x, 0) * 1%);
+    transform: translate(-50%, -50%) scale(0);
+    stroke-width: 1;
+    opacity: 0.8;
+}
+
+.dazzle svg path {
+    fill: var(--glare);
+}
+
+.dazzle:is(:hover, :focus-visible) svg {
+    animation: sparkleAnim 0.75s calc(0.1s + ((var(--delay-step) * var(--d)) * 1s)) both;
+}
+
+@keyframes sparkleAnim {
+    50% {
+        transform: translate(-50%, -50%) scale(var(--s, 1));
+    }
+}
+
+.dazzle svg:nth-of-type(1) {
+    --x: 0;
+    --y: 20;
+    --s: 1.1;
+    --d: 1;
+}
+
+.dazzle svg:nth-of-type(2) {
+    --x: 15;
+    --y: 80;
+    --s: 1.25;
+    --d: 2;
+}
+
+.dazzle svg:nth-of-type(3) {
+    --x: 45;
+    --y: 40;
+    --s: 1.1;
+    --d: 3;
+}
+
+.dazzle svg:nth-of-type(4) {
+    --x: 75;
+    --y: 60;
+    --s: 0.9;
+    --d: 2;
+}
+
+.dazzle svg:nth-of-type(5) {
+    --x: 100;
+    --y: 30;
+    --s: 0.8;
+    --d: 4;
+}
+
+/* Fluid Typography Utility */
+:where(.fluid) {
+    --fluid-min: calc(var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0)));
+    --fluid-max: calc(var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0)));
+    --fluid-preferred: calc((var(--fluid-max) - var(--fluid-min)) / (var(--font-width-max) - var(--font-width-min)));
+    --fluid-type: clamp((var(--fluid-min) / 16) * 1rem,
+            ((var(--fluid-min) / 16) * 1rem) - (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) + (var(--fluid-preferred) * 100vi),
+            (var(--fluid-max) / 16) * 1rem);
+    font-size: var(--fluid-type);
+}
+
+/* Responsive adjustments for mobile */
+@media screen and (max-width: 768px) {
+    .web-overlay {
+        top: 15px;
+        right: 15px;
+    }
+    
+    .web-svg-icon {
+        width: 45px;
+        height: 45px;
+        opacity: 0.1;
+    }
+    
+    .dazzle {
+        --font-size: 0.65em;
+        --padding: 0.08em;
+        top: 20px;
+        left: 20px;
+        opacity: 0.85;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .web-overlay {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .web-svg-icon {
+        width: 35px;
+        height: 35px;
+        opacity: 0.08;
+    }
+    
+    .dazzle {
+        --font-size: 0.55em;
+        --padding: 0.06em;
+        top: 15px;
+        left: 15px;
+        opacity: 0.8;
+        border-width: 0.8px;
+    }
+}
