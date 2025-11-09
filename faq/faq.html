@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link rel="stylesheet" href="../faq/faq.css">
+
+
+</head>
+
+<body>
+    <!-- Simple Matrix Background Effect -->
+    <div class="matrix-grid-container"></div>
+    
+    <!-- VHS/CRT Overlay Effects -->
+    <div class="scanlines"></div>
+    <div class="vhs-overlay">
+        <div class="noise"></div>
+        <div class="noise noise-moving"></div>
+    </div>
+
+    <canvas id="starfield" width="974" height="738"></canvas>
+
+    <div class="dynamic-island" id="dynamic-island">
+            <div class="logo">
+        <a href="https://unstop.com/hackathons/escape-da-vinci-chandigarh-university-cu-ajitgarh-punjab-1567073" target="_blank" class="web-link">
+            <img src="../loader/logo.png" alt="Escape Da Vinci Logo" />
+        </a>
+    </div>
+        <div class="menu-items">
+            <a href="../home/home.html">HOME</a>
+            <a href="../about/about.html">ABOUT</a>
+            <a href="../faq/faq.html">FAQ</a>
+            <a href="../contact/contact.html">CONTACT</a>
+        </div>
+    </div>
+
+        <div class="\&quot;section" main-content\"="">
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="sprite-wrapper">
+                <div class="book">
+                    <!--  Carousel container -->
+                    <div class="carousel" style="--slides: 10;">
+                        <!--  Bg sprite -->
+                        <div class="sprite"></div>
+                        <!--  Scroll buttons -->
+                        <button class="scroll-btn left" aria-label="Scroll Left" style="opacity: 1;"></button>
+                        <button class="scroll-btn right" aria-label="Scroll Right" style="opacity: 1;"></button>
+                        <!--  Carousel items -->
+                        
+                        <!-- Page 1 -->
+                        <div class="carousel-item">
+                            <div class="page-container">
+                                <div class="page left-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What is a Hackathon?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            A hackathon is an event where programmers, designers, and other tech enthusiasts collaborate intensively on software projects. Participants work in teams to create functioning software or hardware prototypes within a limited timeframe, usually 24-48 hours.
+                                        </p>
+                                        <br>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            These events foster innovation, learning, and networking. Hackathons often have specific themes or challenges, and participants present their creations to judges at the end for prizes and recognition.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="page right-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">Who can participate?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Hackathons are open to students, professionals, and hobbyists of all skill levels. Most events welcome beginners and provide mentors to help guide participants through the process.
+                                        </p>
+                                        <br>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Typical participants include:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Software Developers</li>
+                                            <li>UI/UX Designers</li>
+                                            <li>Data Scientists</li>
+                                            <li>Project Managers</li>
+                                            <li>Domain Experts</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 2 -->
+                        <div class="carousel-item">
+                            <div class="page-container">
+                                <div class="page left-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to form a team?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Teams typically consist of 2-5 members with complementary skills. You can form teams before the event or during team formation sessions at the hackathon beginning.
+                                        </p>
+                                        <br>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Look for team members with diverse skills: frontend development, backend development, design, and domain knowledge. Many hackathons have Discord servers or team matching platforms to help connect participants.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="page right-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What should I bring?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Essential items for a hackathon include:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Laptop and charger</li>
+                                            <li>Headphones</li>
+                                            <li>Water bottle</li>
+                                            <li>Comfortable clothing</li>
+                                            <li>Any specialized hardware</li>
+                                        </ul>
+                                        <br>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Most hackathons provide food, drinks, and sleeping areas, but check the event details beforehand.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 3 -->
+                        <div class="carousel-item">
+                            <div class="page-container">
+                                <div class="page left-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to choose a project?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Select a project that aligns with the hackathon theme and your team's skills. Consider the time constraint and choose something ambitious but achievable within 24-48 hours.
+                                        </p>
+                                        <br>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Focus on creating a minimum viable product (MVP) that demonstrates your core concept rather than building a complete application.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="page right-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What technologies are commonly used?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Popular technologies at hackathons include:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Frontend: React, Vue, Angular</li>
+                                            <li>Backend: Node.js, Python, Firebase</li>
+                                            <li>Mobile: React Native, Flutter</li>
+                                            <li>APIs: REST, GraphQL</li>
+                                            <li>Version Control: Git, GitHub</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 4 -->
+                        <div class="carousel-item">
+                            <div class="page-container">
+                                <div class="page left-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How are projects judged?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Projects are typically judged on:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Technical complexity</li>
+                                            <li>Creativity and innovation</li>
+                                            <li>Design and user experience</li>
+                                            <li>Practicality and usefulness</li>
+                                            <li>Quality of presentation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="page right-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What makes a good presentation?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            A compelling presentation should:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Clearly explain the problem</li>
+                                            <li>Showcase your solution</li>
+                                            <li>Include a live demo</li>
+                                            <li>Highlight technical achievements</li>
+                                            <li>Be well-rehearsed and concise</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 5 -->
+                        <div class="carousel-item">
+                            <div class="page-container">
+                                <div class="page left-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">Can I use pre-existing code?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Generally, you should write new code during the hackathon. However, you can use:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Open-source libraries</li>
+                                            <li>Public APIs</li>
+                                            <li>Code snippets for common tasks</li>
+                                            <li>Boilerplate templates</li>
+                                        </ul>
+                                        <br>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Always check the specific rules of your hackathon regarding pre-existing code.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="page right-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to manage time effectively?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Effective time management strategies:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Plan your project in detail first</li>
+                                            <li>Break work into small tasks</li>
+                                            <li>Set milestones and deadlines</li>
+                                            <li>Allocate time for testing and debugging</li>
+                                            <li>Practice your presentation beforehand</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 6 -->
+                        <div class="carousel-item">
+                            <div class="page-container">
+                                <div class="page left-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What if I get stuck?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Don't panic! Hackathons provide various resources:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Mentors and organizers</li>
+                                            <li>Technical workshops</li>
+                                            <li>Online documentation</li>
+                                            <li>Fellow participants</li>
+                                            <li>Sponsor representatives</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="page right-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How important is sleep?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            While some participants pull all-nighters, getting adequate sleep is crucial for:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Maintaining focus and creativity</li>
+                                            <li>Making better technical decisions</li>
+                                            <li>Effective problem-solving</li>
+                                            <li>Team communication</li>
+                                        </ul>
+                                        <br>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Plan for at least 4-6 hours of sleep during a 48-hour hackathon.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 7 -->
+                        <div class="carousel-item">
+                            <div class="page-container">
+                                <div class="page left-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What are common prizes?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Hackathon prizes vary but often include:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Cash prizes</li>
+                                            <li>Hardware (drones, VR headsets, etc.)</li>
+                                            <li>Software licenses and subscriptions</li>
+                                            <li>Internship opportunities</li>
+                                            <li>Mentorship and incubation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="page right-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to network effectively?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Networking opportunities at hackathons:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Attend workshops and talks</li>
+                                            <li>Participate in social events</li>
+                                            <li>Connect with sponsors at their booths</li>
+                                            <li>Exchange contact information</li>
+                                            <li>Follow up after the event</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 8 -->
+                        <div class="carousel-item">
+                            <div class="page-container">
+                                <div class="page left-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What if I'm a beginner?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Hackathons are excellent learning opportunities for beginners:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Look for beginner-friendly tracks</li>
+                                            <li>Join as part of a mixed-skill team</li>
+                                            <li>Focus on learning rather than winning</li>
+                                            <li>Attend all workshops</li>
+                                            <li>Don't hesitate to ask for help</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="page right-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to prepare technically?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Technical preparation tips:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Set up your development environment</li>
+                                            <li>Learn basic Git and GitHub</li>
+                                            <li>Practice with common APIs</li>
+                                            <li>Familiarize with deployment platforms</li>
+                                            <li>Create reusable code templates</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 9 -->
+                        <div class="carousel-item">
+                            <div class="page-container">
+                                <div class="page left-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What about intellectual property?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Intellectual property rules vary by hackathon:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Most hackathons let you keep your IP</li>
+                                            <li>Some sponsor challenges may have specific terms</li>
+                                            <li>Always read the event rules carefully</li>
+                                            <li>Consider open-sourcing your project</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="page right-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to handle team conflicts?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Team conflict resolution strategies:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Establish clear roles and responsibilities</li>
+                                            <li>Communicate openly and regularly</li>
+                                            <li>Use version control to avoid code conflicts</li>
+                                            <li>Take breaks when frustrated</li>
+                                            <li>Seek mediator help if needed</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 10 -->
+                        <div class="carousel-item">
+                            <div class="page-container">
+                                <div class="page left-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">What happens after the hackathon?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Post-hackathon opportunities:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Continue developing your project</li>
+                                            <li>Add it to your portfolio</li>
+                                            <li>Apply for incubation programs</li>
+                                            <li>Participate in demo days</li>
+                                            <li>Maintain connections with teammates</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="page right-page">
+                                    <div>
+                                        <h3 style="margin: 0 0 1rem 0; color: #ff4444;">How to find hackathons?</h3>
+                                        <p style="margin: 0; text-indent: 1rem">
+                                            Resources for finding hackathons:
+                                        </p>
+                                        <ul style="padding: 0; list-style: auto; list-style-position: inside; margin: 1rem 0">
+                                            <li>Devpost and Hackathon.com</li>
+                                            <li>University and company websites</li>
+                                            <li>Tech community newsletters</li>
+                                            <li>Social media and Discord servers</li>
+                                            <li>Local tech meetups and groups</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll-marker-group"><div class="scroll-marker" data-slide="0" style="cursor: pointer;"></div><div class="scroll-marker active" data-slide="1" style="cursor: pointer;"></div><div class="scroll-marker" data-slide="2" style="cursor: pointer;"></div><div class="scroll-marker" data-slide="3" style="cursor: pointer;"></div><div class="scroll-marker" data-slide="4" style="cursor: pointer;"></div><div class="scroll-marker" data-slide="5" style="cursor: pointer;"></div><div class="scroll-marker" data-slide="6" style="cursor: pointer;"></div><div class="scroll-marker" data-slide="7" style="cursor: pointer;"></div><div class="scroll-marker" data-slide="8" style="cursor: pointer;"></div><div class="scroll-marker" data-slide="9" style="cursor: pointer;"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="background-music" loop="" autoplay="">
+        <source src="../audio/bg.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="../faq/faq.js"></script>
+
+
+</body>
+
+
+</html>

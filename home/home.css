@@ -809,3 +809,331 @@ html {
         border-width: 0.8px;
     }
 }
+.images-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    padding: 3rem 2rem;
+}
+
+.thought-bubble {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 2rem;
+    padding: 1.5rem 1.8rem;
+    max-width: 300px;
+    color: #f8f8f8;
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.thought-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 40px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 215, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    transform: rotate(45deg);
+    border-radius: 0 0 50% 0;
+    backdrop-filter: blur(10px);
+}
+
+.thought-bubble h3 {
+    color: #ffd700;
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.5px;
+}
+
+.thought-bubble p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #eaeaea;
+    font-style: italic;
+}
+
+.thought-bubble:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.35);
+}
+.images-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 1rem;
+    position: relative;
+    z-index: 5; /* stays above statue */
+}
+
+.thought-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 1.8rem;
+    padding: 1.5rem 1.8rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
+    max-width: 280px;
+    transition: all 0.3s ease-in-out;
+    animation: floaty 6s ease-in-out infinite;
+}
+
+.thought-card::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 40px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.08);
+    border-left: 1px solid rgba(255, 215, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    transform: rotate(45deg);
+    border-radius: 0 0 50% 0;
+    backdrop-filter: blur(10px);
+}
+
+.card-content h3 {
+    color: #ffd700;
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: #f1f1f1;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.thought-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.4);
+}
+
+/* Floating subtle motion */
+@keyframes floaty {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+.footer-section {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    position: relative;
+    z-index: 5;
+}
+
+.footer-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.footer-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+.center-register {
+    text-align: center;
+    margin: 60px 0 80px;
+    position: relative;
+    z-index: 10;
+}
+
+.register-glow-btn {
+    position: relative;
+    display: inline-block;
+    padding: 18px 40px;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 2px solid #ffcc33;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #ffcc33, #ff6600, #ffcc33);
+    background-size: 200%;
+    transition: all 0.4s ease;
+    animation: glowPulse 3s infinite linear;
+    box-shadow: 0 0 20px rgba(255, 204, 51, 0.6);
+}
+
+.register-glow-btn:hover {
+    background-position: 100%;
+    box-shadow: 0 0 35px rgba(255, 204, 51, 0.9), 0 0 70px rgba(255, 153, 0, 0.8);
+    transform: scale(1.05);
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 204, 51, 0.5), 0 0 40px rgba(255, 153, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(255, 204, 51, 0.9), 0 0 70px rgba(255, 153, 0, 0.8);
+    }
+}
+/* Countdown Section Styling */
+.countdown-section {
+    text-align: center;
+    margin: 100px 0 80px;
+    color: #fff;
+    position: relative;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 60px 20px;
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.15);
+}
+
+.countdown-content h2 {
+    font-size: 2rem;
+    color: #ffcc33;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.event-info {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Timer Styling */
+#countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+#countdown-timer div {
+    text-align: center;
+    background: rgba(255, 204, 51, 0.1);
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 204, 51, 0.4);
+    transition: 0.3s;
+}
+
+#countdown-timer div:hover {
+    transform: scale(1.08);
+}
+
+#countdown-timer span {
+    font-size: 2.5rem;
+    display: block;
+    color: #ffcc33;
+}
+
+#countdown-timer small {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Glowing Register Button */
+.register-glow-btn {
+    display: inline-block;
+    padding: 16px 38px;
+    font-size: 1.2rem;
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ffcc33, #ff9933);
+    border-radius: 40px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px rgba(255, 204, 51, 0.7);
+}
+
+.register-glow-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 50px rgba(255, 204, 51, 1);
+}
+.banner-section p {
+  color: #949494;
+  margin-bottom: 20px;
+  font-family: "Metal Mania", cursive !important; /* only paragraph font */
+  font-size: 18px;
+  line-height: 1.6;
+}
+/* Corner Logos */
+.corner-logo {
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Left Logo — bigger and more visible */
+.left-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 120px; /* increased size */
+    z-index: 1000;
+}
+
+.left-logo:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 15px rgba(214, 248, 68, 0.6));
+}
+
+/* Right Logos Container */
+.right-logos {
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+}
+
+/* ISTE and Tamboo Logos */
+.right-logos img {
+    width: 90px;
+    height: 100px;
+}
+
+.right-logos img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(214, 248, 68, 0.6));
+}
+
+/* The "X" between logos */
+.logo-x {
+    font-size: 50px;
+    color: #f84444;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(214, 248, 68, 0.6);
+    user-select: none;
+}
+
