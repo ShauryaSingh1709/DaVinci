@@ -62,10 +62,11 @@
                 </a>
             </div>
             <div class="menu-items">
-                <a href="../home/home.html">HOME</a>
                 <a href="../about/about.html">ABOUT</a>
                 <a href="../faq/faq.html">FAQ</a>
                 <a href="../contact/contact.html">CONTACT</a>
+                <a href="../legacy/legacy.html">LEGACY</a>
+                <a href="../sponsors/sponsors.html">SPONSORS</a>
             </div>
         </div>  
 
@@ -135,6 +136,205 @@ Only those who think like Da Vinci himself will make it through.</p>
 </section>
     </main>
     
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rewards & Prizes</title>
+<style>
+  @import url('https://fonts.cdnfonts.com/css/pixeltext');
+
+  body {
+    margin: 0;
+    background: #0e0b04;
+    font-family: 'PixelText', serif;
+    overflow-x: hidden;
+  }
+
+  /* ===== Floating Vault Button ===== */
+  .vault-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+  }
+
+  .vault-btn {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 2px solid #ff4444;
+    box-shadow: 0 0 18px rgba(255, 68, 68, 0.7);
+    overflow: hidden;
+    cursor: pointer;
+    animation: float 3s ease-in-out infinite;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .vault-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 68, 68, 1);
+  }
+
+  .vault-btn video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    filter: brightness(1.2) contrast(1.1);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* ===== Rewards Panel ===== */
+  .vault-panel {
+    position: absolute;
+    bottom: 85px;
+    right: 0;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    width: 520px; /* wider panel */
+    background: rgba(15, 10, 5, 0.95);
+    border: 2px solid #ff4444;
+    border-radius: 12px;
+    color: #ff4444;
+    box-shadow: 0 0 25px rgba(255, 68, 68, 0.4);
+    padding: 18px 22px;
+    backdrop-filter: blur(6px);
+    transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+
+  .vault-panel.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .vault-header {
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    border-bottom: 1px solid #ff4444;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px rgba(255, 68, 68, 0.8);
+  }
+
+  .rewards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 15px;
+  }
+
+  .reward {
+    background: rgba(255, 68, 68, 0.08);
+    border-left: 3px solid #ff4444;
+    padding: 8px 10px;
+    border-radius: 6px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.35s ease;
+  }
+
+  .vault-panel.active .reward {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reward-title {
+    font-weight: bold;
+    color: #ff4444;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+  }
+
+  .reward-desc {
+    font-size: 0.85em;
+    color: #ffbbbb;
+    margin-top: 2px;
+  }
+
+  .reward:nth-child(odd) { transition-delay: 0.1s; }
+  .reward:nth-child(even) { transition-delay: 0.2s; }
+
+</style>
+</head>
+<body>
+
+  <!-- Floating Money Vault -->
+  <div class="vault-container">
+    <div class="vault-btn" id="vaultBtn">
+      <video autoplay loop muted playsinline>
+        <source src="../loader/money-bag.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Rewards Panel -->
+    <div class="vault-panel" id="vaultPanel">
+      <div class="vault-header">🏆 Rewards & Prizes</div>
+
+      <div class="rewards-grid">
+        <div class="reward">
+          <div class="reward-title">👑 MASTERS OF THE CIPHER</div>
+          <div class="reward-desc">💸 ₹75,000 + 🏆 Trophy + 📜 Certificate</div>
+        </div>
+
+        <div class="reward">
+          <div class="reward-title">🥈 APPRENTICE</div>
+          <div class="reward-desc">💸 ₹35,000 + 🏆 Trophy + 📜 Certificate</div>
+        </div>
+
+        <div class="reward">
+          <div class="reward-title">🥉 NOVICE</div>
+          <div class="reward-desc">💸 ₹20,000 + 🏆 Trophy + 📜 Certificate</div>
+        </div>
+
+        <div class="reward">
+          <div class="reward-title">🎨 BEST UI/UX DESIGN</div>
+          <div class="reward-desc">💸 ₹5,000 + 🎖️ Medal + 📜 Certificate</div>
+        </div>
+
+        <div class="reward">
+          <div class="reward-title">🎭 MOST FUN PROJECT</div>
+          <div class="reward-desc">💸 ₹5,000 + 🎖️ Medal + 📜 Certificate</div>
+        </div>
+
+        <div class="reward">
+          <div class="reward-title">🚀 TOP NEWCOMERS</div>
+          <div class="reward-desc">💸 ₹5,000 + 🎖️ Medal + 📜 Certificate</div>
+        </div>
+
+        <div class="reward">
+          <div class="reward-title">🎓 PARTICIPATION</div>
+          <div class="reward-desc">📜 Certificate for all participants</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const vaultBtn = document.getElementById('vaultBtn');
+    const vaultPanel = document.getElementById('vaultPanel');
+
+    vaultBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      vaultPanel.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!vaultPanel.contains(e.target) && !vaultBtn.contains(e.target)) {
+        vaultPanel.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>
 
     <!-- Background Music -->
     <audio id="background-music" loop>
