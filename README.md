@@ -38,13 +38,12 @@ git clone https://github.com/ShauryaSingh1709/DaVinci.git
 ```
 
 🛠 Tech Stack
-HTML5
 
-CSS3 (with refined UI styling)
+HTML
+CSS
+JavaScript
+ThreeJS
 
-JavaScript 
-
-No build tools. No installations. No hassle.
 
 👤 Author
 Shaurya Singh
