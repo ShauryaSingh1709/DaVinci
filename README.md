@@ -45,8 +45,10 @@ JavaScript
 ThreeJS
 
 
-👤 Author
-Shaurya Singh
-GitHub: https://github.com/ShauryaSingh1709
+## 👤 Author  
+
+**Shaurya Singh**  
+[💻 GitHub Profile](https://github.com/ShauryaSingh1709)
+
 
 <p align="center"><strong>If DaVinci helps you, consider ⭐ starring the repo!</strong></p> 
