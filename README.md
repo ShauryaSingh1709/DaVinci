@@ -48,7 +48,8 @@ ThreeJS
 ## 👤 Author  
 
 **Shaurya Singh**  
-[💻 GitHub Profile](https://github.com/ShauryaSingh1709)
+
+[![GitHub](https://img.shields.io/badge/GitHub-ShauryaSingh1709-black?logo=github&style=for-the-badge)](https://github.com/ShauryaSingh1709)
 
 
 <p align="center"><strong>If DaVinci helps you, consider ⭐ starring the repo!</strong></p> 
