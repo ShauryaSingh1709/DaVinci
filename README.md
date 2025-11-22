@@ -35,48 +35,14 @@ Perfect for organizers who want premium results with minimal effort.
 ### 1️⃣ Clone the project
 ```bash
 git clone https://github.com/ShauryaSingh1709/DaVinci.git
-2️⃣ Open the site
-Just open index.html in your browser.
-
-3️⃣ Customize
-Replace text in each section
-
-Adjust fonts, theme colors, and style from CSS
-
-Add/remove sections according to your event
-
-4️⃣ Deploy anywhere
-DaVinci works seamlessly on:
-
-Vercel
-
-GitHub Pages
-
-Netlify
-
-Firebase Hosting
-
-Any static web server
-
-Deployment takes under a minute.
-
-🎯 Ideal Use-Cases
-Academic hackathons
-
-University tech events
-
-Corporate innovation challenges
-
-College festivals
-
-MVP event sites
+```
 
 🛠 Tech Stack
 HTML5
 
 CSS3 (with refined UI styling)
 
-JavaScript (Vanilla)
+JavaScript 
 
 No build tools. No installations. No hassle.
 
@@ -84,4 +50,4 @@ No build tools. No installations. No hassle.
 Shaurya Singh
 GitHub: https://github.com/ShauryaSingh1709
 
-<p align="center"><strong>If DaVinci helps you, consider ⭐ starring the repo!</strong></p> ```
+<p align="center"><strong>If DaVinci helps you, consider ⭐ starring the repo!</strong></p> 
