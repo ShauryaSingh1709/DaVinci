@@ -39,10 +39,10 @@ git clone https://github.com/ShauryaSingh1709/DaVinci.git
 
 🛠 Tech Stack
 
-HTML
-CSS
-JavaScript
-ThreeJS
+HTML,
+ CSS,
+ JavaScript,
+ ThreeJS,
 
 
 ## 👤 Author  
